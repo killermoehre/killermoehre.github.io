@@ -62,6 +62,8 @@ The `sleep 5` is just as a security measurement to make sure that the backend se
 
 The exposed haproxy socket can be accessed by everybody and everything able to reach the ip/port. There is no authorization, authentication, nor encryption, so make sure your firewall is tight. Also if all your backend hosts rotate at the exact same time, you will basically shut down your service.
 
+Also the backend server is always re-enabled. I'm quite confident that the script could be updated to check if the server is enabled or not, writing a state file in `prerotate` and reading it in `postrotate`, but this is a task for the advanced reader of this blog entry.
+
 ## Footnotes
 
 <a name="myfootnote1">1</a>: You could also use it without `.socket` by using the special syntax `ExecStart=@/usr/lib/systemd/systemd-socket-proxy $IP:$PORT /run/haproxy.stat`
