@@ -31,6 +31,7 @@ So how can I talk to haproxy from some random backend host via TCP/IP? Sure, one
     [Install]
     WantedBy=socket.target
 
+
     === proxy-to-haproxy.service ===
     [Unit]
     Requires=haproxy.service
@@ -42,7 +43,7 @@ So how can I talk to haproxy from some random backend host via TCP/IP? Sure, one
     PrivateTmp=true
     PrivateNetwork=true
 
-To enable this configuration, put those files into `/etc/systemd/system/`, run `systemctl daemon-reload` and `systemctl enable --now proxy-to-haprxy.socket`. The `/run/haproxy.sock` is now available from the network and can be reached via `telnet`. To check this, one can use
+To enable this configuration, put those files into `/etc/systemd/system/`, run `systemctl daemon-reload` and `systemctl enable --now proxy-to-haproxy.socket`. The `/run/haproxy.sock` is now available from the network and can be reached via `telnet`. To check this, one can use
 
     echo 'show stats' | telnet 10.0.0.3 20000
 
